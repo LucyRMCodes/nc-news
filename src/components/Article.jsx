@@ -28,7 +28,7 @@ function Article() {
 		<div>
 			<h1>{article.title}</h1>
 			<p>
-				<em>{article.created_at.slice(0, 10)}</em>
+				<i>{article.created_at.slice(0, 10)}</i>
 			</p>
 			<p>By {article.author}</p>
 			<p>{article.body}</p>

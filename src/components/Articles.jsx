@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchArticles } from "../App";
+import { fetchArticles } from "../Api";
 import { Link } from "react-router-dom";
 
 function Articles() {
@@ -30,7 +30,7 @@ function Articles() {
 					return (
 						<div key={created_at + index} className="article-card">
 							<Link to={`/articles/${article_id}`}>
-								<strong>{title}</strong>
+								<b>{title}</b>
 							</Link>
 							<p>By {author}</p>
 							<p>{created_at.slice(0, 10)}</p>
