@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { fetchArticle } from "../App";
+import { fetchArticle } from "../Api";
 
-function Articles() {
-	const articleId = useParams();
+function Article() {
+	const { articleId } = useParams();
 	const [article, setArticle] = useState("");
 	const [isLoading, setIsLoading] = useState(true);
 	const [error, setError] = useState(null);
@@ -14,7 +14,7 @@ function Articles() {
 				setArticle(article);
 			})
 			.catch((err) => {
-				if (err.status === 404) setError("Article not found");
+				if (err.response.status === 404) setError("Article not found");
 				else setError("Something went wrong");
 			})
 			.finally(() => {
@@ -23,7 +23,17 @@ function Articles() {
 	}, []);
 
 	if (error) return <p>{error}</p>;
-	return <h1>Article</h1>;
+	if (isLoading) return <p>Loading...</p>;
+	return (
+		<div>
+			<h1>{article.title}</h1>
+			<p>
+				<em>{article.created_at.slice(0, 10)}</em>
+			</p>
+			<p>By {article.author}</p>
+			<p>{article.body}</p>
+		</div>
+	);
 }
 
-export default Articles;
+export default Article;

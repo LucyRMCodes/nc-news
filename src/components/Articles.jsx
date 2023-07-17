@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchArticles } from "../App";
+import { Link } from "react-router-dom";
 
 function Articles() {
 	const [articles, setArticles] = useState([]);
@@ -24,18 +25,20 @@ function Articles() {
 	return (
 		<div>
 			<h1>Articles</h1>
-			{articles.map(({ title, author, created_at, votes }, index) => {
-				return (
-					<div key={created_at + index} className="article-card">
-						<p>
-							<strong>{title}</strong>
-						</p>
-						<p>By {author}</p>
-						<p>{created_at.slice(0, 10)}</p>
-						<p>votes: {votes}</p>
-					</div>
-				);
-			})}
+			{articles.map(
+				({ article_id, title, author, created_at, votes }, index) => {
+					return (
+						<div key={created_at + index} className="article-card">
+							<Link to={`/articles/${article_id}`}>
+								<strong>{title}</strong>
+							</Link>
+							<p>By {author}</p>
+							<p>{created_at.slice(0, 10)}</p>
+							<p>votes: {votes}</p>
+						</div>
+					);
+				}
+			)}
 		</div>
 	);
 }
