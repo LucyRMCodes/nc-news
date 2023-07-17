@@ -24,7 +24,7 @@ function Articles() {
 	return (
 		<div>
 			<h1>Articles</h1>
-			{articles.map(({ title, topic, author, created_at, votes }, index) => {
+			{articles.map(({ title, author, created_at, votes }, index) => {
 				return (
 					<div key={created_at + index} className="article-card">
 						<p>
