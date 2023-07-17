@@ -27,11 +27,13 @@ function Articles() {
 			{articles.map(({ title, topic, author, created_at, votes }, index) => {
 				return (
 					<div key={created_at + index}>
-						<p>{title}</p>
+						<p>
+							<strong>{title}</strong>
+						</p>
+						<p>by {author}</p>
 						<p>{topic}</p>
-						<p>{author}</p>
-						<p>{created_at}</p>
-						<p>{votes}</p>
+						<p>{created_at.slice(0, 9)}</p>
+						<p>votes: {votes}</p>
 					</div>
 				);
 			})}
