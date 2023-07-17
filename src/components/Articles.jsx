@@ -11,7 +11,7 @@ function Articles() {
 				setArticles(articles);
 			})
 			.catch((err) => {
-				setError(err);
+				setError("Something went wrong");
 			})
 			.finally(() => {
 				setIsLoading(false);
@@ -26,12 +26,11 @@ function Articles() {
 			<h1>Articles</h1>
 			{articles.map(({ title, topic, author, created_at, votes }, index) => {
 				return (
-					<div key={created_at + index}>
+					<div key={created_at + index} className="article-card">
 						<p>
 							<strong>{title}</strong>
 						</p>
-						<p>by {author}</p>
-						<p>{topic}</p>
+						<p>By {author}</p>
 						<p>{created_at.slice(0, 10)}</p>
 						<p>votes: {votes}</p>
 					</div>
