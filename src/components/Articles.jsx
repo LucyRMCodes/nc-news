@@ -32,7 +32,7 @@ function Articles() {
 						</p>
 						<p>by {author}</p>
 						<p>{topic}</p>
-						<p>{created_at.slice(0, 9)}</p>
+						<p>{created_at.slice(0, 10)}</p>
 						<p>votes: {votes}</p>
 					</div>
 				);
