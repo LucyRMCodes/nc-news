@@ -25,8 +25,8 @@ function Article() {
 	if (error) return <p>{error}</p>;
 	if (isLoading) return <p>Loading...</p>;
 	return (
-		<div>
-			<h1>{article.title}</h1>
+		<div className="content">
+			<h1 className="article-title">{article.title}</h1>
 			<p>
 				<i>{article.created_at.slice(0, 10)}</i>
 			</p>

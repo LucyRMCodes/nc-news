@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { fetchArticles } from "../Api";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
-function Articles() {
-	const [articles, setArticles] = useState([]);
+function Articles({ setHeader, articles, setArticles }) {
+	const { topic } = useParams();
 	const [isLoading, setIsLoading] = useState(true);
 	const [error, setError] = useState("");
 	useEffect(() => {
-		fetchArticles()
+		setHeader(topic ? topic[0].toUpperCase() + topic.slice(1) : "Articles");
+		fetchArticles(topic)
 			.then((articles) => {
 				setArticles(articles);
 			})
@@ -17,14 +18,13 @@ function Articles() {
 			.finally(() => {
 				setIsLoading(false);
 			});
-	}, []);
+	}, [topic]);
 
 	if (isLoading) return <p>Loading...</p>;
 	if (error) return <p>{error}</p>;
 
 	return (
-		<div>
-			<h1>Articles</h1>
+		<div className="content">
 			{articles.map(
 				({ article_id, title, author, created_at, votes }, index) => {
 					return (
