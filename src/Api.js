@@ -18,6 +18,6 @@ export const fetchArticle = (articleId) => {
 
 export const fetchComments = (articleId) => {
 	return axios.get(`/articles/${articleId}/comments`).then(({ data }) => {
-		return data.articles;
+		return data.comments;
 	});
 };

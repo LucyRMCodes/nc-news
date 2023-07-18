@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchArticle } from "../Api";
+import Comments from "./Comments";
 
 function Article() {
 	const { articleId } = useParams();
@@ -11,6 +12,7 @@ function Article() {
 	useEffect(() => {
 		fetchArticle(articleId)
 			.then((article) => {
+				setError("");
 				setArticle(article);
 			})
 			.catch((err) => {
@@ -31,7 +33,12 @@ function Article() {
 				<i>{article.created_at.slice(0, 10)}</i>
 			</p>
 			<p>By {article.author}</p>
-			<p>{article.body}</p>
+			<section>
+				<p>{article.body}</p>
+			</section>
+			<section>
+				<Comments id={article.article_id} />
+			</section>
 		</div>
 	);
 }
