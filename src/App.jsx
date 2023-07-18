@@ -25,7 +25,10 @@ function App() {
 						/>
 					}
 				></Route>
-				<Route path="/articles/:articleId" element={<Article />}></Route>
+				<Route
+					path="/articles/:articleId"
+					element={<Article setHeader={setHeader} />}
+				></Route>
 				<Route
 					path="/articles/topics/:topic"
 					element={

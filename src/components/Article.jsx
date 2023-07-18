@@ -3,13 +3,14 @@ import { useParams } from "react-router-dom";
 import { fetchArticle } from "../Api";
 import Comments from "./Comments";
 
-function Article() {
+function Article({ setHeader }) {
 	const { articleId } = useParams();
 	const [article, setArticle] = useState("");
 	const [isLoading, setIsLoading] = useState(true);
 	const [error, setError] = useState(null);
 
 	useEffect(() => {
+		setHeader("");
 		fetchArticle(articleId)
 			.then((article) => {
 				setError("");
@@ -35,8 +36,10 @@ function Article() {
 					<i>{article.created_at.slice(0, 10)}</i>
 				</p>
 				<p>By {article.author}</p>
+				<img className="article-image" src={article.article_img_url}></img>
 				<p>{article.body}</p>
 			</section>
+
 			<section className="comments">
 				<Comments id={article.article_id} />
 			</section>
