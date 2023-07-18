@@ -24,6 +24,9 @@ nav {
 	grid-row: 1;
 }
 
+.content {
+	margin-top: 200px;
+}
 .article {
 	grid-column: 1;
 	grid-row: 2;
