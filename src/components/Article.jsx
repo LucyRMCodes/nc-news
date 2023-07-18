@@ -27,16 +27,17 @@ function Article() {
 	if (error) return <p>{error}</p>;
 	if (isLoading) return <p>Loading...</p>;
 	return (
-		<div className="content">
+		<div className="article-page">
 			<h1 className="article-title">{article.title}</h1>
-			<p>
-				<i>{article.created_at.slice(0, 10)}</i>
-			</p>
-			<p>By {article.author}</p>
-			<section>
+
+			<section className="article">
+				<p>
+					<i>{article.created_at.slice(0, 10)}</i>
+				</p>
+				<p>By {article.author}</p>
 				<p>{article.body}</p>
 			</section>
-			<section>
+			<section className="comments">
 				<Comments id={article.article_id} />
 			</section>
 		</div>

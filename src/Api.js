@@ -17,7 +17,7 @@ export const fetchArticle = (articleId) => {
 };
 
 export const fetchComments = (articleId) => {
-	return axios.get(`/articles/${articleId}/comments`).then(({ data }) => {
+	return newsApi.get(`/articles/${articleId}/comments`).then(({ data }) => {
 		return data.comments;
 	});
 };

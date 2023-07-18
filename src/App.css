@@ -1,6 +1,6 @@
 #root {
-	width: 40%;
-	margin-left: 30%;
+	width: 80%;
+	margin-left: 10%;
 	text-align: center;
 }
 
@@ -8,6 +8,31 @@ nav {
 	display: flex;
 	justify-content: center;
 	gap: 50px;
+}
+
+.article-page {
+	margin-top: 200px;
+	display: grid;
+	grid-template-columns: repeat(2, 50%);
+	grid-template-rows: repeat(2, auto);
+	column-gap: 100px;
+}
+
+.article-title {
+	text-align: left;
+	grid-column: span 2;
+	grid-row: 1;
+}
+
+.article {
+	grid-column: 1;
+	grid-row: 2;
+	text-align: left;
+}
+
+.comments {
+	grid-column: 2;
+	grid-row: 2;
 }
 
 .article-card {
@@ -29,14 +54,43 @@ nav {
 	top: 0;
 }
 
-.content {
-	margin-top: 200px;
-}
-
 h1 {
 	color: #000;
 }
 
 .article-title {
 	color: #eb1c24;
+}
+
+.comment {
+	height: 110px;
+	border: 1px solid white;
+	padding: 0.5rem;
+	margin: 1rem;
+	margin-bottom: 0px;
+	font-size: small;
+	text-align: left;
+}
+
+.comment,
+.collapsed {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.comment,
+.expanded {
+	height: fit-content;
+	white-space: normal;
+	text-overflow: unset;
+	overflow: visible;
+}
+.votes {
+	margin: 0px;
+	border: 1px solid transparent;
+	font-size: small;
+	text-align: left;
+	line-height: 0px;
+	padding-left: 50px;
 }

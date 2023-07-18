@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import { fetchComments } from "../Api";
+import Comment from "./Comment";
 
 function Comments({ id }) {
 	const [comments, setComments] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
-	const [error, setError] = useState("");
+	const [error, setError] = useState(null);
 	useEffect(() => {
 		fetchComments(id)
 			.then((comments) => {
-				setError("");
+				setError(null);
 				setComments(comments);
 			})
 			.catch((err) => {
@@ -23,7 +24,7 @@ function Comments({ id }) {
 		return (
 			<div>
 				<h2>Comments</h2>
-				<p>No Comments...</p>
+				<p>No Comments</p>
 			</div>
 		);
 
@@ -37,14 +38,19 @@ function Comments({ id }) {
 
 	return (
 		<div>
-			<h2>Comments</h2>
-			{comments.map(({ body, author, votes, created_at }) => {
-				<div>
-					<p>{author}</p>
-					<p>{body}</p>
-					<p>{created_at.slice(0, 10)}</p>
-					<p>{votes}</p>
-				</div>;
+			<p>
+				<b>Comments</b>
+			</p>
+			{comments.map(({ body, author, votes, created_at }, index) => {
+				return (
+					<Comment
+						key={created_at + index}
+						body={body}
+						author={author}
+						votes={votes}
+						created_at={created_at}
+					/>
+				);
 			})}
 		</div>
 	);
