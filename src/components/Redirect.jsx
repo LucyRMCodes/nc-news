@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 function Redirect() {
 	const navigate = useNavigate();
 	useEffect(() => {
-		navigate("/articles");
+		navigate("/home");
 	}, []);
 	return <p>Redirecting...</p>;
 }
