@@ -4,19 +4,29 @@ import { fetchTopics } from "../Api";
 
 function Banner({ header }) {
 	const [topics, setTopics] = useState([]);
+	const [isLoading, setIsLoading] = useState(true);
 	useEffect(() => {
 		fetchTopics().then((topics) => {
+			setIsLoading(false);
 			setTopics(topics);
 		});
 	}, []);
+
+	if (isLoading)
+		return (
+			<p className="banner" style={{ color: "#eb1c24" }}>
+				Loading...
+			</p>
+		);
 	return (
 		<div className="banner">
 			<h1>{header}</h1>
 			<nav>
 				<Link to="/">Home</Link>
-				{topics.map((topic) => {
+				<Link to="/articles">All Articles</Link>
+				{topics.map((topic, index) => {
 					return (
-						<Link to={`/articles/topics/${topic.slug}`}>
+						<Link to={`/articles/topics/${topic.slug}`} key={index}>
 							{` ${topic.slug[0].toUpperCase() + topic.slug.slice(1)}`}
 						</Link>
 					);
