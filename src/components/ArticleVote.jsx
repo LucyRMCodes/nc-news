@@ -11,8 +11,13 @@ function ArticleVote({ votes, articleId }) {
 	const [voteCount, setVoteCount] = useState(0);
 
 	useEffect(() => {
-		patchArticleVotes(articleId, voteCount);
-	}, [voteCount]);
+		patchArticleVotes(articleId, voteCount).catch(
+			(err) => {
+				setVoteCount(0);
+			},
+			[voteCount]
+		);
+	});
 
 	return (
 		<div className="votes">
