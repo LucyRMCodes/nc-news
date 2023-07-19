@@ -38,9 +38,6 @@ function Comments({ id }) {
 
 	return (
 		<div>
-			<p>
-				<b>Comments</b>
-			</p>
 			{comments.map(({ body, author, votes, created_at }, index) => {
 				return (
 					<Comment

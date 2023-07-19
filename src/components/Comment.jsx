@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Votes from "./Vote";
 
 function Comment({ body, author, votes, created_at }) {
 	const [isExpanded, setIsExpanded] = useState(false);
@@ -18,8 +19,8 @@ function Comment({ body, author, votes, created_at }) {
 					{body}
 				</p>
 			</section>
-			<section className="votes">
-				<p>{votes} votes</p>
+			<section className="comment-votes">
+				<Votes />
 			</section>
 		</div>
 	);

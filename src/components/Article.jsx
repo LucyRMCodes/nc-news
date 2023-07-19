@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchArticle } from "../Api";
 import Comments from "./Comments";
+import Votes from "./Vote";
 
 function Article() {
 	const { articleId } = useParams();
@@ -38,6 +39,13 @@ function Article() {
 				<p>{article.body}</p>
 			</section>
 			<section className="comments">
+				<p>
+					<b>Votes</b>
+				</p>
+				<Votes />
+				<p>
+					<b>Comments</b>
+				</p>
 				<Comments id={article.article_id} />
 			</section>
 		</div>
