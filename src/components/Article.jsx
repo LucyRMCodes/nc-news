@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchArticle } from "../Api";
 import Comments from "./Comments";
+import ArticleVote from "./ArticleVote";
 import Loading from "./Loading";
 
 function Article({ setHeader, setCurrent }) {
@@ -43,7 +44,14 @@ function Article({ setHeader, setCurrent }) {
 			</section>
 
 			<section className="comments">
-				<Comments id={article.article_id} />
+				<p>
+					<b>Votes</b>
+				</p>
+				<ArticleVote votes={article.votes} articleId={article.article_id} />
+				<p>
+					<b>Comments</b>
+				</p>
+				<Comments articleId={article.article_id} />
 			</section>
 		</div>
 	);

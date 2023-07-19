@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchArticles } from "../Api";
 import { Link, useParams } from "react-router-dom";
+import { BsHeartFill, BsHeartbreakFill } from "react-icons/bs";
 import SortArticles from "./SortArticles";
 import Loading from "./Loading";
 
@@ -28,7 +29,6 @@ function Articles({ setHeader, articles, setArticles }) {
 
 	if (isLoading) return <Loading />;
 	if (error) return <p>{error}</p>;
-	console.log(sortBy);
 	return (
 		<>
 			<SortArticles
@@ -51,6 +51,11 @@ function Articles({ setHeader, articles, setArticles }) {
 								<p>By {author}</p>
 								<p>{created_at.slice(0, 10)}</p>
 								<p style={{ wordSpacing: 5 }}>
+									{votes >= 0 ? (
+										<BsHeartFill style={{ marginRight: "10px" }} />
+									) : (
+										<BsHeartbreakFill style={{ marginRight: "10px" }} />
+									)}
 									Votes: {votes} Comments: {comment_count}
 								</p>
 								<p></p>

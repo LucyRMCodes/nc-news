@@ -1,6 +1,7 @@
 import { useState } from "react";
+import CommentVote from "./CommentVote";
 
-function Comment({ body, author, votes, created_at }) {
+function Comment({ commentId, body, author, votes, created_at, articleId }) {
 	const [isExpanded, setIsExpanded] = useState(false);
 	return (
 		<div>
@@ -18,8 +19,12 @@ function Comment({ body, author, votes, created_at }) {
 					{body}
 				</p>
 			</section>
-			<section className="votes">
-				<p>{votes} votes</p>
+			<section className="comment-votes">
+				<CommentVote
+					votes={votes}
+					articleId={articleId}
+					commentId={commentId}
+				/>
 			</section>
 		</div>
 	);

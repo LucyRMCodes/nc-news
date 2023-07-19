@@ -56,6 +56,14 @@ li:hover {
 	flex-grow: 2;
 }
 
+.votes {
+	display: grid;
+	grid-template-columns: repeat(4, auto);
+	justify-content: center;
+	align-items: center;
+	column-gap: 10px;
+}
+
 .comments {
 	width: 40%;
 	margin-top: 50px;
@@ -113,13 +121,14 @@ li:hover {
 	text-overflow: unset;
 	overflow: visible;
 }
-.votes {
+
+.comment-votes {
 	margin: 0px;
 	border: 1px solid transparent;
 	font-size: small;
 	text-align: left;
 	line-height: 0px;
-	padding-left: 50px;
+	margin-left: -400px;
 }
 
 .center {
