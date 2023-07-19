@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchArticle } from "../Api";
 import Comments from "./Comments";
-import Votes from "./Vote";
+import ArticleVote from "./ArticleVote";
 import Loading from "./Loading";
 
 function Article({ setHeader, setCurrent }) {
@@ -47,11 +47,11 @@ function Article({ setHeader, setCurrent }) {
 				<p>
 					<b>Votes</b>
 				</p>
-				<Votes />
+				<ArticleVote votes={article.votes} articleId={article.article_id} />
 				<p>
 					<b>Comments</b>
 				</p>
-				<Comments id={article.article_id} />
+				<Comments articleId={article.article_id} />
 			</section>
 		</div>
 	);
