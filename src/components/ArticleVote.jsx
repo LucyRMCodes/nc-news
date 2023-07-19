@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
 	BsHeart,
 	BsHeartFill,
@@ -9,15 +9,12 @@ import { patchArticleVotes } from "../Api";
 
 function ArticleVote({ votes, articleId }) {
 	const [voteCount, setVoteCount] = useState(0);
-
-	useEffect(() => {
-		patchArticleVotes(articleId, voteCount).catch(
-			(err) => {
-				setVoteCount(0);
-			},
-			[voteCount]
-		);
-	});
+	const updateVotes = (display, actual) => {
+		setVoteCount(display);
+		patchArticleVotes(articleId, actual).catch(() => {
+			setVoteCount(0);
+		});
+	};
 
 	return (
 		<div className="votes">
@@ -25,14 +22,14 @@ function ArticleVote({ votes, articleId }) {
 				<BsHeartFill
 					size={20}
 					onClick={(e) => {
-						setVoteCount(0);
+						updateVotes(0, -1);
 					}}
 				/>
 			) : (
 				<BsHeart
 					size={20}
 					onClick={(e) => {
-						setVoteCount(1);
+						updateVotes(1, 1);
 					}}
 				/>
 			)}
@@ -42,14 +39,14 @@ function ArticleVote({ votes, articleId }) {
 				<BsHeartbreakFill
 					size={20}
 					onClick={(e) => {
-						setVoteCount(0);
+						updateVotes(0, 1);
 					}}
 				/>
 			) : (
 				<BsHeartbreak
 					size={20}
 					onClick={(e) => {
-						setVoteCount(-1);
+						updateVotes(-1, -1);
 					}}
 				/>
 			)}
