@@ -20,7 +20,8 @@ function Banner({ header }) {
 		);
 	return (
 		<div className="banner">
-			<h1>{header}</h1>
+			{header ? <h1>{header}</h1> : null}
+
 			<nav>
 				<Link to="/">Home</Link>
 				<Link to="/articles">All Articles</Link>
