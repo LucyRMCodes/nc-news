@@ -2,15 +2,19 @@ import { useEffect, useState } from "react";
 import { fetchArticles } from "../Api";
 import { Link, useParams } from "react-router-dom";
 import SortArticles from "./SortArticles";
+import Loading from "./Loading";
 
 function Articles({ setHeader, articles, setArticles }) {
 	const { topic } = useParams();
+	const [order, setOrder] = useState(null);
+	const [sortBy, setSortBy] = useState("created_at");
 	const [isLoading, setIsLoading] = useState(true);
 	const [error, setError] = useState("");
+
 	useEffect(() => {
 		setHeader(topic ? topic[0].toUpperCase() + topic.slice(1) : "Articles");
 		setIsLoading(true);
-		fetchArticles(topic)
+		fetchArticles(topic, order, sortBy)
 			.then((articles) => {
 				setArticles(articles);
 			})
@@ -20,31 +24,19 @@ function Articles({ setHeader, articles, setArticles }) {
 			.finally(() => {
 				setIsLoading(false);
 			});
-	}, [topic]);
+	}, [topic, order, sortBy]);
 
-	if (isLoading)
-		return (
-			<div>
-				<p>Loading...</p>
-				<div class="center">
-					<div class="wave"></div>
-					<div class="wave"></div>
-					<div class="wave"></div>
-					<div class="wave"></div>
-					<div class="wave"></div>
-					<div class="wave"></div>
-					<div class="wave"></div>
-					<div class="wave"></div>
-					<div class="wave"></div>
-					<div class="wave"></div>
-				</div>
-			</div>
-		);
+	if (isLoading) return <Loading />;
 	if (error) return <p>{error}</p>;
-
+	console.log(sortBy);
 	return (
 		<>
-			<SortArticles />
+			<SortArticles
+				setOrder={setOrder}
+				order={order}
+				setSortBy={setSortBy}
+				sortBy={sortBy}
+			/>
 			<div className="content">
 				{articles.map(
 					(

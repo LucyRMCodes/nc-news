@@ -1,7 +1,15 @@
+body {
+	justify-content: center;
+}
+
 #root {
-	width: 80%;
-	margin-left: 10%;
+	position: absolute;
+	top: 200px;
+	display: grid;
+	flex-direction: column;
+	max-width: 80%;
 	text-align: center;
+	justify-content: center;
 }
 
 nav {
@@ -24,7 +32,9 @@ li:hover {
 }
 
 .article-page {
-	margin-top: 50px;
+	margin-left: 10%;
+	max-width: 80%;
+	margin-top: -100px;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: flex-start;
@@ -53,12 +63,12 @@ li:hover {
 }
 
 .article-card {
+	margin: 0px;
 	width: 500px;
 	border: 1px solid white;
 	border-radius: 20px;
 	padding: 1rem;
 	margin: 1rem;
-	margin-left: 30%;
 }
 
 .banner {
@@ -76,7 +86,6 @@ li:hover {
 .sort {
 	width: fit-content;
 	justify-content: left;
-	margin-top: 200px;
 	margin-left: 30%;
 }
 
@@ -120,10 +129,10 @@ li:hover {
 	align-items: center;
 }
 .wave {
-	width: 5px;
-	height: 50px;
+	width: 3px;
+	height: 30px;
 	background: #eb1c24;
-	margin: 10px;
+	margin: 8px;
 	animation: wave 1s linear infinite;
 	border-radius: 20px;
 }

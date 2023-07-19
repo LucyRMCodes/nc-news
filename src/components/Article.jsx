@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchArticle } from "../Api";
 import Comments from "./Comments";
+import Loading from "./Loading";
 
-function Article({ setHeader }) {
+function Article({ setHeader, setCurrent }) {
 	const { articleId } = useParams();
 	const [article, setArticle] = useState("");
 	const [isLoading, setIsLoading] = useState(true);
@@ -13,6 +14,7 @@ function Article({ setHeader }) {
 		setHeader("");
 		fetchArticle(articleId)
 			.then((article) => {
+				setCurrent(article);
 				setError("");
 				setArticle(article);
 			})
@@ -26,7 +28,7 @@ function Article({ setHeader }) {
 	}, []);
 
 	if (error) return <p>{error}</p>;
-	if (isLoading) return <p>Loading...</p>;
+	if (isLoading) return <Loading />;
 	return (
 		<div className="article-page">
 			<h1 className="article-title">{article.title}</h1>
