@@ -57,6 +57,7 @@ function PostComment({ articleId, setComments }) {
 					value={newComment}
 					maxLength={250}
 					onChange={(e) => {
+						setError(null);
 						setNewComment(e.target.value);
 					}}
 				></textarea>
