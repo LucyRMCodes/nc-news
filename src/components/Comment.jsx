@@ -12,7 +12,7 @@ function Comment({ commentId, body, author, votes, created_at, articleId }) {
 				}}
 			>
 				<p>
-					<b>{author}</b>
+					<b>@{author}</b>
 				</p>
 				<p>{created_at.slice(0, 10)}</p>
 				<p className={`body ${isExpanded ? "expanded" : "collapsed"}`}>

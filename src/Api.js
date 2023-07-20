@@ -28,11 +28,19 @@ export const fetchTopics = () => {
 		return data.topics;
 	});
 };
-
+export const fetchUsers = () => {
+	return newsApi.get("/users").then(({ data }) => {
+		return data.users;
+	});
+};
 export const patchArticleVotes = (articleId, inc_votes) => {
 	return newsApi.patch(`/articles/${articleId}`, { inc_votes });
 };
 
 export const patchCommentVotes = (commentId, inc_votes) => {
 	return newsApi.patch(`/comments/${commentId}`, { inc_votes });
+};
+
+export const postComment = (articleId, username, body) => {
+	return newsApi.post(`/articles/${articleId}/comments`, { username, body });
 };

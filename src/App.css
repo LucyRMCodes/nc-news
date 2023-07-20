@@ -91,13 +91,21 @@ li:hover {
 	top: 0;
 }
 
+.banner-top {
+	display: grid;
+	grid-template-columns: repeat(3, 33%);
+	justify-content: center;
+}
+
 .sort {
 	width: fit-content;
 	justify-content: left;
 	margin-left: 30%;
 }
 
-.comment {
+.comment,
+#post-comment {
+	width: 100%;
 	height: 110px;
 	border: 1px solid white;
 	padding: 0.5rem;
@@ -123,12 +131,23 @@ li:hover {
 }
 
 .comment-votes {
+	max-width: fit-content;
+	padding-left: 20px;
 	margin: 0px;
 	border: 1px solid transparent;
 	font-size: small;
 	text-align: left;
 	line-height: 0px;
-	margin-left: -400px;
+}
+
+.user-comment {
+	display: grid;
+	grid-template-columns: 50px auto auto;
+}
+
+.login-collapsed {
+	height: 0px;
+	overflow: hidden;
 }
 
 .center {
