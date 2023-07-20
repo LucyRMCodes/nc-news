@@ -36,10 +36,10 @@ function Comments({ articleId }) {
 				<p>Loading...</p>
 			</div>
 		);
-
+	console.log(comments);
 	return (
 		<div>
-			<PostComment articleId={articleId} />
+			<PostComment articleId={articleId} setComments={setComments} />
 			{comments.map(
 				({ comment_id, body, author, votes, created_at }, index) => {
 					return (

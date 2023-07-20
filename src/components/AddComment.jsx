@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { UserContext } from "../contexts/User";
 import { postComment } from "../Api";
 
-function PostComment({ articleId }) {
+function PostComment({ articleId, setComments }) {
 	const { user } = useContext(UserContext);
 	const [newComment, setNewComment] = useState("");
 	const [isDisabled, setIsDisabled] = useState(false);
@@ -12,6 +12,12 @@ function PostComment({ articleId }) {
 		setIsDisabled(true);
 		postComment(articleId, user[0], newComment)
 			.then(() => {
+				setComments((current) => {
+					return [
+						{ author: user[0], created_at: "Just now", body: newComment },
+						...current,
+					];
+				});
 				setNewComment("");
 			})
 			.catch(() => {

@@ -20,11 +20,13 @@ function Comment({ commentId, body, author, votes, created_at, articleId }) {
 				</p>
 			</section>
 			<section className="comment-votes">
-				<CommentVote
-					votes={votes}
-					articleId={articleId}
-					commentId={commentId}
-				/>
+				{commentId ? (
+					<CommentVote
+						votes={votes}
+						articleId={articleId}
+						commentId={commentId}
+					/>
+				) : null}
 			</section>
 		</div>
 	);
