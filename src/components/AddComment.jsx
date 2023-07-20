@@ -10,22 +10,27 @@ function PostComment({ articleId, setComments }) {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		setIsDisabled(true);
-		postComment(articleId, user[0], newComment)
-			.then(() => {
-				setComments((current) => {
-					return [
-						{ author: user[0], created_at: "Just now", body: newComment },
-						...current,
-					];
+		if (newComment.length > 0) {
+			postComment(articleId, user[0], newComment)
+				.then(() => {
+					setComments((current) => {
+						return [
+							{ author: user[0], created_at: "Just now", body: newComment },
+							...current,
+						];
+					});
+					setNewComment("");
+				})
+				.catch(() => {
+					setError("Could not post comment");
+				})
+				.finally(() => {
+					setIsDisabled(false);
 				});
-				setNewComment("");
-			})
-			.catch(() => {
-				setError("Could not post comment");
-			})
-			.finally(() => {
-				setIsDisabled(false);
-			});
+		} else {
+			setError("Cannot post empty comment");
+			setIsDisabled(false);
+		}
 	};
 	if (!user[0]) return <p>Login to add comment</p>;
 	return (
@@ -55,7 +60,7 @@ function PostComment({ articleId, setComments }) {
 						setNewComment(e.target.value);
 					}}
 				></textarea>
-				{error ? <p>{error}</p> : null}
+				{error ? <p style={{ fontSize: "small" }}>{error}</p> : null}
 				<div
 					style={{
 						display: "grid",
