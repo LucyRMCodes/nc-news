@@ -10,12 +10,16 @@ import Error from "./components/Error";
 function App() {
 	const [articles, setArticles] = useState([]);
 	const [header, setHeader] = useState("");
+	const [current, setCurrent] = useState(null);
 	return (
 		<>
 			<Banner header={header} />
 			<Routes>
 				<Route path="/" element={<Redirect />}></Route>
-				<Route path="/home" element={<Home setHeader={setHeader} />}></Route>
+				<Route
+					path="/home"
+					element={<Home setHeader={setHeader} current={current} />}
+				></Route>
 				<Route
 					path="/articles"
 					element={
@@ -26,7 +30,10 @@ function App() {
 						/>
 					}
 				></Route>
-				<Route path="/articles/:articleId" element={<Article />}></Route>
+				<Route
+					path="/articles/:articleId"
+					element={<Article setHeader={setHeader} setCurrent={setCurrent} />}
+				></Route>
 				<Route
 					path="/articles/topics/:topic"
 					element={

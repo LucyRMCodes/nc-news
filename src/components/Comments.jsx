@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { fetchComments } from "../Api";
 import Comment from "./Comment";
 
-function Comments({ id }) {
+function Comments({ articleId }) {
 	const [comments, setComments] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 	const [error, setError] = useState(null);
 	useEffect(() => {
-		fetchComments(id)
+		fetchComments(articleId)
 			.then((comments) => {
 				setError(null);
 				setComments(comments);
@@ -38,20 +38,21 @@ function Comments({ id }) {
 
 	return (
 		<div>
-			<p>
-				<b>Comments</b>
-			</p>
-			{comments.map(({ body, author, votes, created_at }, index) => {
-				return (
-					<Comment
-						key={created_at + index}
-						body={body}
-						author={author}
-						votes={votes}
-						created_at={created_at}
-					/>
-				);
-			})}
+			{comments.map(
+				({ comment_id, body, author, votes, created_at }, index) => {
+					return (
+						<Comment
+							key={created_at + index}
+							body={body}
+							author={author}
+							votes={votes}
+							created_at={created_at}
+							articleId={articleId}
+							commentId={comment_id}
+						/>
+					);
+				}
+			)}
 		</div>
 	);
 }
