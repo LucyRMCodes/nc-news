@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { fetchComments } from "../Api";
 import Comment from "./Comment";
+import PostComment from "./AddComment";
+import Loading from "./Loading";
 
 function Comments({ articleId }) {
 	const [comments, setComments] = useState([]);
@@ -32,12 +34,12 @@ function Comments({ articleId }) {
 		return (
 			<div>
 				<h2>Comments</h2>
-				<p>Loading...</p>
+				<Loading />
 			</div>
 		);
-
 	return (
 		<div>
+			<PostComment articleId={articleId} setComments={setComments} />
 			{comments.map(
 				({ comment_id, body, author, votes, created_at }, index) => {
 					return (

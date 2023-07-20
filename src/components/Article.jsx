@@ -36,7 +36,9 @@ function Article({ setHeader, setCurrent }) {
 
 			<section className="article">
 				<p>
-					<i>{article.created_at.slice(0, 10)}</i>
+					<i>
+						{article.created_at.slice(0, 10)} {article.created_at.slice(11, 16)}
+					</i>
 				</p>
 				<p>By {article.author}</p>
 				<img className="article-image" src={article.article_img_url}></img>
