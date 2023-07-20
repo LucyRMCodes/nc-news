@@ -56,26 +56,32 @@ function PostComment({ articleId, setComments }) {
 					}}
 				></textarea>
 				{error ? <p>{error}</p> : null}
-				<p
+				<div
 					style={{
-						margin: "0px",
-						width: "fit-content",
-						fontSize: "small",
-						marginLeft: "98%",
+						display: "grid",
+						justifyItems: "right",
+						marginBottom: "20px",
 					}}
 				>
-					{newComment.length}/250
-				</p>
-				<button
-					style={{
-						backgroundColor: "#eb1c24",
-						fontSize: "small",
-						marginLeft: "99%",
-					}}
-					disabled={isDisabled}
-				>
-					Post
-				</button>
+					<p
+						style={{
+							margin: "0px",
+							width: "fit-content",
+							fontSize: "small",
+						}}
+					>
+						{newComment.length}/250
+					</p>
+					<button
+						style={{
+							backgroundColor: "#eb1c24",
+							fontSize: "small",
+						}}
+						disabled={isDisabled}
+					>
+						Post
+					</button>
+				</div>
 			</form>
 		</>
 	);
