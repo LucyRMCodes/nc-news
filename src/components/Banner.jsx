@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { fetchTopics } from "../Api";
+import Login from "./Login";
 
 function Banner({ header }) {
 	const [topics, setTopics] = useState([]);
@@ -20,7 +21,11 @@ function Banner({ header }) {
 		);
 	return (
 		<div className="banner">
-			{header ? <h1>{header}</h1> : null}
+			<section className="banner-top">
+				<div></div>
+				{header ? <h1>{header}</h1> : <p></p>}
+				<Login />
+			</section>
 
 			<nav>
 				<Link to="/">Home</Link>

@@ -30,7 +30,7 @@ function Articles({ setHeader, articles, setArticles }) {
 	if (isLoading) return <Loading />;
 	if (error) return <p>{error}</p>;
 	return (
-		<>
+		<div>
 			<SortArticles
 				setOrder={setOrder}
 				order={order}
@@ -64,7 +64,7 @@ function Articles({ setHeader, articles, setArticles }) {
 					}
 				)}
 			</div>
-		</>
+		</div>
 	);
 }
 
