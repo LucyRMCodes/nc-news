@@ -3,7 +3,9 @@ import { deleteComment } from "../Api";
 
 function DeleteComment({ setComments, commentId }) {
 	const [error, setError] = useState(null);
+	const [isDisabled, setIsDisabled] = useState(false);
 	const handleClick = () => {
+		setIsDisabled(true);
 		deleteComment(commentId)
 			.then(() => {
 				setComments((current) => {
@@ -27,6 +29,7 @@ function DeleteComment({ setComments, commentId }) {
 				backgroundColor: "transparent",
 			}}
 			onClick={handleClick}
+			disabled={isDisabled}
 		>
 			x
 		</button>
