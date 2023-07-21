@@ -4,13 +4,15 @@ import { Link, useParams } from "react-router-dom";
 import { BsHeartFill, BsHeartbreakFill } from "react-icons/bs";
 import SortArticles from "./SortArticles";
 import Loading from "./Loading";
+import Error from "./Error";
 
 function Articles({ setHeader, articles, setArticles }) {
 	const { topic } = useParams();
 	const [order, setOrder] = useState(null);
 	const [sortBy, setSortBy] = useState("created_at");
 	const [isLoading, setIsLoading] = useState(true);
-	const [error, setError] = useState("");
+	const [status, setStatus] = useState(null);
+	const [error, setError] = useState(null);
 
 	useEffect(() => {
 		setHeader(topic ? topic[0].toUpperCase() + topic.slice(1) : "Articles");
@@ -20,7 +22,8 @@ function Articles({ setHeader, articles, setArticles }) {
 				setArticles(articles);
 			})
 			.catch((err) => {
-				setError("Something went wrong");
+				setStatus(err.response.status);
+				setError(err.response.data.msg);
 			})
 			.finally(() => {
 				setIsLoading(false);
@@ -28,7 +31,7 @@ function Articles({ setHeader, articles, setArticles }) {
 	}, [topic, order, sortBy]);
 
 	if (isLoading) return <Loading />;
-	if (error) return <p>{error}</p>;
+	if (error) return <Error status={status} error={error} />;
 	return (
 		<div>
 			<SortArticles

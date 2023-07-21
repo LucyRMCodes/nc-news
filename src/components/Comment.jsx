@@ -1,8 +1,8 @@
-import { useContext, useState } from "react";
-import DeleteComment from "./DeleteComment";
+import { useState, useContext } from "react";
 import Votes from "./Votes";
 import { patchCommentVotes } from "../Api";
 import { UserContext } from "../contexts/User";
+import DeleteComment from "./DeleteComment";
 
 function Comment({ setComments, commentId, body, author, votes, created_at }) {
 	const { user } = useContext(UserContext);
