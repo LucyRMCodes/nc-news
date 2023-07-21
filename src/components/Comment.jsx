@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Votes from "./Votes";
 import { patchCommentVotes } from "../Api";
+import { UserContext } from "../contexts/User";
+import DeleteComment from "./DeleteComment";
 
-function Comment({ commentId, body, author, votes, created_at }) {
+function Comment({ setComments, commentId, body, author, votes, created_at }) {
+	const { user } = useContext(UserContext);
 	const [isExpanded, setIsExpanded] = useState(false);
 	return (
 		<div>
@@ -12,6 +15,13 @@ function Comment({ commentId, body, author, votes, created_at }) {
 					setIsExpanded(!isExpanded);
 				}}
 			>
+				{user[0] === author ? (
+					<DeleteComment
+						setComments={setComments}
+						commentId={commentId}
+						author={author}
+					/>
+				) : null}
 				<p>
 					<b>@{author}</b>
 				</p>
