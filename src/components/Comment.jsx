@@ -1,9 +1,8 @@
 import { useState } from "react";
-import CommentVote from "./CommentVote";
 import Votes from "./Votes";
 import { patchCommentVotes } from "../Api";
 
-function Comment({ commentId, body, author, votes, created_at, articleId }) {
+function Comment({ commentId, body, author, votes, created_at }) {
 	const [isExpanded, setIsExpanded] = useState(false);
 	return (
 		<div>
