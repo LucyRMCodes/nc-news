@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { BsHeartFill, BsHeartbreakFill } from "react-icons/bs";
 import SortArticles from "./SortArticles";
 import Loading from "./Loading";
+import Error from "./Error";
 
 function Articles({ setHeader, articles, setArticles }) {
 	const { topic } = useParams();
@@ -21,10 +22,8 @@ function Articles({ setHeader, articles, setArticles }) {
 				setArticles(articles);
 			})
 			.catch((err) => {
-				console.log(err);
-				setStatus(err.status);
-				setError(err.message);
-				// setError("Something went wrong");
+				setStatus(err.response.status);
+				setError(err.response.data.msg);
 			})
 			.finally(() => {
 				setIsLoading(false);
@@ -32,7 +31,7 @@ function Articles({ setHeader, articles, setArticles }) {
 	}, [topic, order, sortBy]);
 
 	if (isLoading) return <Loading />;
-	if (error) return <p>{error}</p>;
+	if (error) return <Error status={status} error={error} />;
 	return (
 		<div>
 			<SortArticles

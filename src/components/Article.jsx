@@ -4,11 +4,13 @@ import { fetchArticle } from "../Api";
 import Comments from "./Comments";
 import ArticleVote from "./ArticleVote";
 import Loading from "./Loading";
+import Error from "./Error";
 
 function Article({ setHeader, setCurrent }) {
 	const { articleId } = useParams();
 	const [article, setArticle] = useState("");
 	const [isLoading, setIsLoading] = useState(true);
+	const [status, setStatus] = useState(null);
 	const [error, setError] = useState(null);
 
 	useEffect(() => {
@@ -20,15 +22,15 @@ function Article({ setHeader, setCurrent }) {
 				setArticle(article);
 			})
 			.catch((err) => {
-				if (err.response.status === 404) setError("Article not found");
-				else setError("Something went wrong");
+				setStatus(err.response.status);
+				setError(err.response.data.msg);
 			})
 			.finally(() => {
 				setIsLoading(false);
 			});
 	}, []);
 
-	if (error) return <p>{error}</p>;
+	if (error) return <Error error={error} status={status} />;
 	if (isLoading) return <Loading />;
 	return (
 		<div className="article-page">
