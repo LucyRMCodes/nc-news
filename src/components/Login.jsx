@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/User";
 import Loading from "./Loading";
 import { fetchUsers } from "../Api";
@@ -8,6 +9,7 @@ function Login({ setHeader }) {
 	const [loginInput, setLoginInput] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState(null);
+	const navigate = useNavigate();
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		setIsLoading(true);
@@ -18,6 +20,7 @@ function Login({ setHeader }) {
 				});
 				if (found) {
 					setUser([found.username, found.name, found.avatar_url]);
+					navigate(`/articles/authors/${found.username}`);
 					setLoginInput("");
 				} else {
 					setError(`Can't find user ${loginInput}`);
