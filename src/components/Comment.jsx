@@ -1,5 +1,7 @@
 import { useState } from "react";
 import CommentVote from "./CommentVote";
+import Votes from "./Votes";
+import { patchCommentVotes } from "../Api";
 
 function Comment({ commentId, body, author, votes, created_at, articleId }) {
 	const [isExpanded, setIsExpanded] = useState(false);
@@ -21,11 +23,7 @@ function Comment({ commentId, body, author, votes, created_at, articleId }) {
 			</section>
 			<section className="comment-votes">
 				{commentId ? (
-					<CommentVote
-						votes={votes}
-						articleId={articleId}
-						commentId={commentId}
-					/>
+					<Votes votes={votes} id={commentId} patchVotes={patchCommentVotes} />
 				) : null}
 			</section>
 		</div>
