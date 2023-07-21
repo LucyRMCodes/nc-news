@@ -26,7 +26,7 @@ function Banner({ header }) {
 			<section className="banner-top">
 				<div></div>
 				{header ? <h1>{header}</h1> : <p></p>}
-				{header !== "Login" ? <Link to="/login">Login</Link> : null}
+				{header !== "Login" && !user[0] ? <Link to="/login">Login</Link> : null}
 				{user[0] ? (
 					<p style={{ color: "black", margin: "0px" }}>
 						Logged in as {user[0]}
