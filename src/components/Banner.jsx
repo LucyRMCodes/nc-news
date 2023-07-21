@@ -24,7 +24,7 @@ function Banner({ header }) {
 			<section className="banner-top">
 				<div></div>
 				{header ? <h1>{header}</h1> : <p></p>}
-				<Login />
+				{header !== "Login" ? <Link to="/login">Login</Link> : null}
 			</section>
 
 			<nav>

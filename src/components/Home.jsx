@@ -25,29 +25,34 @@ function Home({ setHeader, current }) {
 	return (
 		<div className="home content">
 			{current ? (
-				<div className="article-card">
+				<div>
 					<p>Continue Reading</p>
 					<Link to={`/articles/${current.article_id}`}>{current.title}</Link>
 				</div>
 			) : null}
 			<div>
-				<p>Popular Authors</p>
-				<div
-					className="authors"
-					style={{ display: "flex", justifyContent: "center", gap: "5%" }}
-				>
+				<p>
+					<b>Popular Authors</b>
+				</p>
+				<div style={{ display: "flex", justifyContent: "center" }}>
 					{authors.map(({ name, avatar_url }) => {
 						return (
-							<div key={name}>
-								<p style={{ width: "50px" }}>{name}</p>
-								<img style={{ height: "50px" }} src={avatar_url} />
+							<div
+								style={{ width: "16.7%", height: "fit-content", margin: "5px" }}
+								className="article-card"
+								key={name}
+							>
+								<img style={{ maxHeight: "50px" }} src={avatar_url} />
+								<p>{name}</p>
 							</div>
 						);
 					})}
 				</div>
 			</div>
 			<div>
-				<p>Popular Articles</p>
+				<p>
+					<b>Popular Articles</b>
+				</p>
 				{articles
 					.slice(0, 5)
 					.map(
