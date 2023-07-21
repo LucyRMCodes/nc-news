@@ -33,14 +33,14 @@ function Articles({ setHeader, articles, setArticles }) {
 	if (isLoading) return <Loading />;
 	if (error) return <Error status={status} error={error} />;
 	return (
-		<div>
+		<div className="content">
 			<SortArticles
 				setOrder={setOrder}
 				order={order}
 				setSortBy={setSortBy}
 				sortBy={sortBy}
 			/>
-			<div className="content">
+			<div>
 				{articles.map(
 					(
 						{ article_id, title, author, created_at, comment_count, votes },

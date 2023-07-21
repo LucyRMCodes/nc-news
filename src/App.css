@@ -3,11 +3,10 @@ body {
 }
 
 #root {
-	/* position: absolute; */
 	margin-top: 200px;
 	display: flex;
-	/* flex-direction: column; */
-	max-width: 100%;
+	flex-direction: column;
+	width: 90%;
 	text-align: center;
 	justify-content: center;
 }
@@ -30,15 +29,28 @@ select {
 li:hover {
 	background-color: #eb1c24;
 }
-
+.authors {
+	margin: 0px;
+	border: 1px solid white;
+	border-radius: 20px;
+	padding: 1rem;
+	margin: 1rem;
+}
 .article-page {
-	/* margin-left: 10%; */
 	max-width: 90%;
 	margin-top: -100px;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: flex-start;
 	column-gap: 5%;
+}
+
+.content {
+	width: 75%;
+	margin-left: 12.5%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
 .article-title {
@@ -77,11 +89,10 @@ li:hover {
 
 .article-card {
 	margin: 0px;
-	width: 500px;
 	border: 1px solid white;
 	border-radius: 20px;
-	padding: 1rem;
-	margin: 1rem;
+	margin-bottom: 1rem;
+	padding-top: 1rem;
 }
 
 .banner {
@@ -109,7 +120,8 @@ li:hover {
 	height: fit-content;
 	width: fit-content;
 	justify-content: left;
-	margin-left: 30%;
+	margin-left: 42%;
+	margin-bottom: 2%;
 }
 
 .comment,

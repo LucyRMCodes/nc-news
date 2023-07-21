@@ -23,7 +23,7 @@ function Home({ setHeader, current }) {
 	}, []);
 	if (isLoading) return <Loading />;
 	return (
-		<div className="home">
+		<div className="home content">
 			{current ? (
 				<div className="article-card">
 					<p>Continue Reading</p>
@@ -33,12 +33,13 @@ function Home({ setHeader, current }) {
 			<div>
 				<p>Popular Authors</p>
 				<div
-					style={{ display: "grid", gridTemplateColumns: "repeat(6, auto)" }}
+					className="authors"
+					style={{ display: "flex", justifyContent: "center", gap: "5%" }}
 				>
 					{authors.map(({ name, avatar_url }) => {
 						return (
-							<div>
-								<p>{name}</p>
+							<div key={name}>
+								<p style={{ width: "50px" }}>{name}</p>
 								<img style={{ height: "50px" }} src={avatar_url} />
 							</div>
 						);
