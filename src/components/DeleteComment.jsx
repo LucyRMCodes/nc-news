@@ -1,8 +1,6 @@
-import { useContext, useEffect, useState } from "react";
 import { deleteComment } from "../Api";
-import { UserContext } from "../contexts/User";
 
-function DeleteComment({ setComments, commentId, author }) {
+function DeleteComment({ setComments, commentId }) {
 	const handleClick = () => {
 		deleteComment(commentId).then(() => {
 			setComments((current) => {
