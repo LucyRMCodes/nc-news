@@ -7,6 +7,7 @@ import Article from "./components/Article";
 import Banner from "./components/Banner";
 import Home from "./components/Home";
 import Error from "./components/Error";
+import Login from "./components/Login";
 function App() {
 	const [articles, setArticles] = useState([]);
 	const [header, setHeader] = useState("");
@@ -44,6 +45,7 @@ function App() {
 						/>
 					}
 				></Route>
+				<Route path="/login" element={<Login setHeader={setHeader} />}></Route>
 				<Route path="/*" element={<Error />}></Route>
 			</Routes>
 		</>

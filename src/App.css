@@ -3,7 +3,7 @@ body {
 }
 
 #root {
-	margin-top: 200px;
+	margin-top: 10%;
 	display: flex;
 	flex-direction: column;
 	width: 90%;
@@ -14,11 +14,12 @@ body {
 nav {
 	display: flex;
 	justify-content: center;
-	gap: 50px;
+	gap: 5%;
 }
 
 h1 {
 	color: #000;
+	margin-top: 0px;
 }
 
 select {
@@ -110,8 +111,7 @@ li:hover {
 
 .banner-top {
 	display: grid;
-	grid-template-columns: repeat(3, 33%);
-	justify-content: center;
+	grid-template-columns: repeat(3, 33.4%);
 }
 
 .sort {

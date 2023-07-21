@@ -1,9 +1,9 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../contexts/User";
 import Loading from "./Loading";
 import { fetchUsers } from "../Api";
 
-function Login() {
+function Login({setHeader}) {
 	const { user, setUser } = useContext(UserContext);
 	const [loginInput, setLoginInput] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
@@ -27,6 +27,10 @@ function Login() {
 				setIsLoading(false);
 			});
 	};
+
+	useEffect(() => {
+		setHeader("Login");
+	}, []);
 	if (isLoading) return <Loading />;
 	if (user[0])
 		return (
@@ -59,7 +63,13 @@ function Login() {
 						setLoginInput(e.target.value);
 					}}
 				></input>
-				<button style={{ backgroundColor: "#eb1c24", fontSize: "small" }}>
+				<button
+					style={{
+						backgroundColor: "#eb1c24",
+						fontSize: "small",
+						marginLeft: "5px",
+					}}
+				>
 					Login
 				</button>
 			</form>
