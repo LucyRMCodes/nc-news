@@ -44,3 +44,7 @@ export const patchCommentVotes = (commentId, inc_votes) => {
 export const postComment = (articleId, username, body) => {
 	return newsApi.post(`/articles/${articleId}/comments`, { username, body });
 };
+
+export const deleteComment = (commentId) => {
+	return newsApi.delete(`/comments/${commentId}`);
+};

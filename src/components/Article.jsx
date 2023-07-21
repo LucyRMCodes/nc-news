@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchArticle, patchArticleVotes } from "../Api";
 import Comments from "./Comments";
-import ArticleVote from "./ArticleVote";
 import Loading from "./Loading";
 import Votes from "./Votes";
 

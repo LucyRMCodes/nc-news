@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { fetchComments } from "../Api";
 import Comment from "./Comment";
 import PostComment from "./AddComment";
 import Loading from "./Loading";
+import { UserContext } from "../contexts/User";
 
 function Comments({ articleId }) {
+	const { user } = useContext(UserContext);
 	const [comments, setComments] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 	const [error, setError] = useState(null);
@@ -20,7 +22,7 @@ function Comments({ articleId }) {
 			.finally(() => {
 				setIsLoading(false);
 			});
-	}, []);
+	}, [user]);
 
 	if (error)
 		return (
@@ -50,7 +52,6 @@ function Comments({ articleId }) {
 							author={author}
 							votes={votes}
 							created_at={created_at}
-							articleId={articleId}
 							commentId={comment_id}
 						/>
 					);
