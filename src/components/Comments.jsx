@@ -44,6 +44,7 @@ function Comments({ articleId }) {
 				({ comment_id, body, author, votes, created_at }, index) => {
 					return (
 						<Comment
+							setComments={setComments}
 							key={created_at + index}
 							body={body}
 							author={author}

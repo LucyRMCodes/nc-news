@@ -1,7 +1,16 @@
 import { useState } from "react";
 import CommentVote from "./CommentVote";
+import DeleteComment from "./DeleteComment";
 
-function Comment({ commentId, body, author, votes, created_at, articleId }) {
+function Comment({
+	setComments,
+	commentId,
+	body,
+	author,
+	votes,
+	created_at,
+	articleId,
+}) {
 	const [isExpanded, setIsExpanded] = useState(false);
 	return (
 		<div>
@@ -11,6 +20,7 @@ function Comment({ commentId, body, author, votes, created_at, articleId }) {
 					setIsExpanded(!isExpanded);
 				}}
 			>
+				<DeleteComment setComments={setComments} />
 				<p>
 					<b>@{author}</b>
 				</p>

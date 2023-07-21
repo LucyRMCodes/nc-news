@@ -1,4 +1,4 @@
-function DeleteComment() {
+function DeleteComment({ setComments }) {
 	return <p>x</p>;
 }
 
