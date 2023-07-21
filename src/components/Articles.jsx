@@ -10,7 +10,8 @@ function Articles({ setHeader, articles, setArticles }) {
 	const [order, setOrder] = useState(null);
 	const [sortBy, setSortBy] = useState("created_at");
 	const [isLoading, setIsLoading] = useState(true);
-	const [error, setError] = useState("");
+	const [status, setStatus] = useState(null);
+	const [error, setError] = useState(null);
 
 	useEffect(() => {
 		setHeader(topic ? topic[0].toUpperCase() + topic.slice(1) : "Articles");
@@ -20,7 +21,10 @@ function Articles({ setHeader, articles, setArticles }) {
 				setArticles(articles);
 			})
 			.catch((err) => {
-				setError("Something went wrong");
+				console.log(err);
+				setStatus(err.status);
+				setError(err.message);
+				// setError("Something went wrong");
 			})
 			.finally(() => {
 				setIsLoading(false);
