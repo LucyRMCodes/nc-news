@@ -8,6 +8,7 @@ import Banner from "./components/Banner";
 import Home from "./components/Home";
 import Error from "./components/Error";
 import Login from "./components/Login";
+import Author from "./components/Author";
 function App() {
 	const [articles, setArticles] = useState([]);
 	const [header, setHeader] = useState("");
@@ -39,6 +40,16 @@ function App() {
 					path="/articles/topics/:topic"
 					element={
 						<Articles
+							setHeader={setHeader}
+							articles={articles}
+							setArticles={setArticles}
+						/>
+					}
+				></Route>
+				<Route
+					path="/articles/authors/:author"
+					element={
+						<Author
 							setHeader={setHeader}
 							articles={articles}
 							setArticles={setArticles}

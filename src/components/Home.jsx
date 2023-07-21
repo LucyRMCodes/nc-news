@@ -25,7 +25,7 @@ function Home({ setHeader, current }) {
 	return (
 		<div className="home content">
 			{current ? (
-				<div>
+				<div className="article-card">
 					<p>Continue Reading</p>
 					<Link to={`/articles/${current.article_id}`}>{current.title}</Link>
 				</div>
@@ -35,7 +35,7 @@ function Home({ setHeader, current }) {
 					<b>Popular Authors</b>
 				</p>
 				<div style={{ display: "flex", justifyContent: "center" }}>
-					{authors.map(({ name, avatar_url }) => {
+					{authors.map(({ username, name, avatar_url }) => {
 						return (
 							<div
 								style={{ width: "16.7%", height: "fit-content", margin: "5px" }}
@@ -43,7 +43,9 @@ function Home({ setHeader, current }) {
 								key={name}
 							>
 								<img style={{ maxHeight: "50px" }} src={avatar_url} />
-								<p>{name}</p>
+								<p>
+									<Link to={`/articles/authors/${username}`}>{name}</Link>
+								</p>
 							</div>
 						);
 					})}
