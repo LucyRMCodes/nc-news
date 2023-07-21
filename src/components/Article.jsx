@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { fetchArticle } from "../Api";
+import { fetchArticle, patchArticleVotes } from "../Api";
 import Comments from "./Comments";
 import ArticleVote from "./ArticleVote";
 import Loading from "./Loading";
+import Votes from "./Votes";
 
 function Article({ setHeader, setCurrent }) {
 	const { articleId } = useParams();
@@ -49,7 +50,11 @@ function Article({ setHeader, setCurrent }) {
 				<p>
 					<b>Votes</b>
 				</p>
-				<ArticleVote votes={article.votes} articleId={article.article_id} />
+				<Votes
+					votes={article.votes}
+					id={articleId}
+					patchVotes={patchArticleVotes}
+				/>
 				<p>
 					<b>Comments</b>
 				</p>

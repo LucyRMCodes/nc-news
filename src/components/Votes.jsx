@@ -5,13 +5,12 @@ import {
 	BsHeartbreak,
 	BsHeartbreakFill,
 } from "react-icons/bs";
-import { patchCommentVotes } from "../Api";
 
-function CommentVote({ votes, commentId }) {
+function Votes({ votes, patchVotes, id }) {
 	const [voteCount, setVoteCount] = useState(0);
 	const updateVotes = (display, actual) => {
 		setVoteCount(display);
-		patchCommentVotes(commentId, actual).catch(() => {
+		patchVotes(id, actual).catch(() => {
 			setVoteCount(0);
 		});
 	};
@@ -20,14 +19,14 @@ function CommentVote({ votes, commentId }) {
 		<div className="votes">
 			{voteCount === 1 ? (
 				<BsHeartFill
-					size={15}
+					size={20}
 					onClick={(e) => {
 						updateVotes(0, -1);
 					}}
 				/>
 			) : (
 				<BsHeart
-					size={15}
+					size={20}
 					onClick={(e) => {
 						updateVotes(1, 1);
 					}}
@@ -37,14 +36,14 @@ function CommentVote({ votes, commentId }) {
 			<p>{votes + voteCount}</p>
 			{voteCount === -1 ? (
 				<BsHeartbreakFill
-					size={15}
+					size={20}
 					onClick={(e) => {
 						updateVotes(0, 1);
 					}}
 				/>
 			) : (
 				<BsHeartbreak
-					size={15}
+					size={20}
 					onClick={(e) => {
 						updateVotes(-1, -1);
 					}}
@@ -54,4 +53,4 @@ function CommentVote({ votes, commentId }) {
 	);
 }
 
-export default CommentVote;
+export default Votes;

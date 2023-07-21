@@ -1,6 +1,7 @@
 import { useState } from "react";
-import CommentVote from "./CommentVote";
 import DeleteComment from "./DeleteComment";
+import Votes from "./Votes";
+import { patchCommentVotes } from "../Api";
 
 function Comment({
 	setComments,
@@ -31,11 +32,7 @@ function Comment({
 			</section>
 			<section className="comment-votes">
 				{commentId ? (
-					<CommentVote
-						votes={votes}
-						articleId={articleId}
-						commentId={commentId}
-					/>
+					<Votes votes={votes} id={commentId} patchVotes={patchCommentVotes} />
 				) : null}
 			</section>
 		</div>
