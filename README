@@ -1,0 +1,14 @@
+Hosted version: https://lucy-nc-news.netlify.app
+
+This project integrates my API from Northcoders back-end project. It is a website for reading articles. You can sort articles by author, topic, votes and comments; add and delete comments; and vote on articles and comments.
+
+API: https://lucy-nc-news.onrender.com
+
+To run locally:
+
+-- git clone https://github.com/LucyRTCodes/nc-news
+-- npm install
+-- npm run dev
+
+Software requirements:
+Node.js v20.2.0
