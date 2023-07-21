@@ -3,7 +3,7 @@ import { UserContext } from "../contexts/User";
 import Loading from "./Loading";
 import { fetchUsers } from "../Api";
 
-function Login({setHeader}) {
+function Login({ setHeader }) {
 	const { user, setUser } = useContext(UserContext);
 	const [loginInput, setLoginInput] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
@@ -32,50 +32,34 @@ function Login({setHeader}) {
 		setHeader("Login");
 	}, []);
 	if (isLoading) return <Loading />;
-	if (user[0])
+	if (!user[0]) {
 		return (
-			<p style={{ color: "black", margin: "0px" }}>
-				Logged in as {user[0]}
-				<button
-					style={{
-						backgroundColor: "#eb1c24",
-						fontSize: "small",
-						marginLeft: "20px",
-					}}
-					onClick={(e) => {
-						setUser([null, null, null]);
-					}}
+			<div>
+				<form
+					className={user[0] ? "login-collapsed" : null}
+					onSubmit={handleSubmit}
 				>
-					Logout
-				</button>
-			</p>
+					<label style={{ color: "white" }}>Username: </label>
+					<input
+						value={loginInput}
+						onChange={(e) => {
+							setLoginInput(e.target.value);
+						}}
+					></input>
+					<button
+						style={{
+							backgroundColor: "#eb1c24",
+							fontSize: "small",
+							marginLeft: "5px",
+						}}
+					>
+						Login
+					</button>
+				</form>
+				{error ? <p style={{ color: "white" }}>{error}</p> : null}
+			</div>
 		);
-	return (
-		<div>
-			<form
-				className={user[0] ? "login-collapsed" : null}
-				onSubmit={handleSubmit}
-			>
-				<label style={{ color: "black" }}>Username: </label>
-				<input
-					value={loginInput}
-					onChange={(e) => {
-						setLoginInput(e.target.value);
-					}}
-				></input>
-				<button
-					style={{
-						backgroundColor: "#eb1c24",
-						fontSize: "small",
-						marginLeft: "5px",
-					}}
-				>
-					Login
-				</button>
-			</form>
-			{error ? <p style={{ color: "black" }}>{error}</p> : null}
-		</div>
-	);
+	}
 }
 
 export default Login;
