@@ -27,6 +27,7 @@ function DeleteComment({ setComments, commentId }) {
 				margin: "0px",
 				marginLeft: "95%",
 				backgroundColor: "transparent",
+				color: "white",
 			}}
 			onClick={handleClick}
 			disabled={isDisabled}
