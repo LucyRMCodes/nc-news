@@ -43,22 +43,22 @@ function Article({ setHeader, setCurrent }) {
 					</i>
 				</p>
 				<p>By {article.author}</p>
-				<img className="article-image" src={article.article_img_url}></img>
+				<img
+					className="article-image"
+					src={article.article_img_url}
+					alt={`${article.title}'s article image`}
+				></img>
 				<p>{article.body}</p>
 			</section>
 
 			<section className="comments">
-				<p>
-					<b>Votes</b>
-				</p>
+				<h2 style={{ fontSize: "large" }}>Votes</h2>
 				<Votes
 					votes={article.votes}
 					id={articleId}
 					patchVotes={patchArticleVotes}
 				/>
-				<p>
-					<b>Comments</b>
-				</p>
+				<h2 style={{ fontSize: "large" }}>Comments</h2>
 				<Comments articleId={article.article_id} />
 			</section>
 		</div>

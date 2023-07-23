@@ -19,6 +19,7 @@ function Votes({ votes, patchVotes, id }) {
 		<div className="votes">
 			{voteCount === 1 ? (
 				<BsHeartFill
+					color="#eb1c24"
 					size={20}
 					onClick={(e) => {
 						updateVotes(0, -1);
@@ -33,9 +34,12 @@ function Votes({ votes, patchVotes, id }) {
 				/>
 			)}
 
-			<p>{votes + voteCount}</p>
+			<p style={{ margin: "10px" }}>
+				<b> {votes + voteCount} </b>
+			</p>
 			{voteCount === -1 ? (
 				<BsHeartbreakFill
+					color="#eb1c24"
 					size={20}
 					onClick={(e) => {
 						updateVotes(0, 1);

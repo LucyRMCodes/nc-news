@@ -49,9 +49,11 @@ function Articles({ setHeader, articles, setArticles }) {
 						return (
 							<div key={created_at + index} className="article-card">
 								<Link to={`/articles/${article_id}`}>
-									<b>{title}</b>
+									<h2>
+										<b>{title}</b>
+									</h2>
 								</Link>
-								<p>By {author}</p>
+								<h3>By {author}</h3>
 								<p>{created_at.slice(0, 10)}</p>
 								<p style={{ wordSpacing: 5 }}>
 									{votes >= 0 ? (

@@ -42,7 +42,7 @@ function Login({ setHeader }) {
 					className={user[0] ? "login-collapsed" : null}
 					onSubmit={handleSubmit}
 				>
-					<label style={{ color: "white" }}>Username: </label>
+					<label style={{ color: "black" }}>Username: </label>
 					<input
 						value={loginInput}
 						onChange={(e) => {
@@ -52,7 +52,6 @@ function Login({ setHeader }) {
 					<button
 						style={{
 							backgroundColor: "#eb1c24",
-							fontSize: "small",
 							marginLeft: "5px",
 						}}
 					>

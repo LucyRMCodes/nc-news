@@ -26,14 +26,18 @@ function Home({ setHeader, current }) {
 		<div className="home content">
 			{current ? (
 				<div className="article-card">
-					<p>Continue Reading</p>
-					<Link to={`/articles/${current.article_id}`}>{current.title}</Link>
+					<h2>
+						<b>Continue Reading</b>
+					</h2>
+					<Link to={`/articles/${current.article_id}`}>
+						<h3>{current.title}</h3>
+					</Link>
 				</div>
 			) : null}
 			<div>
-				<p>
+				<h2>
 					<b>Popular Authors</b>
-				</p>
+				</h2>
 				<div style={{ display: "flex", justifyContent: "center" }}>
 					{authors.map(({ username, name, avatar_url }) => {
 						return (
@@ -42,9 +46,15 @@ function Home({ setHeader, current }) {
 								className="article-card"
 								key={name}
 							>
-								<img style={{ maxHeight: "50px" }} src={avatar_url} />
+								<img
+									style={{ maxHeight: "50px" }}
+									src={avatar_url}
+									alt={`${name}'s profile picture`}
+								/>
 								<p>
-									<Link to={`/articles/authors/${username}`}>{name}</Link>
+									<Link to={`/articles/authors/${username}`}>
+										<b>{name}</b>
+									</Link>
 								</p>
 							</div>
 						);
@@ -52,9 +62,9 @@ function Home({ setHeader, current }) {
 				</div>
 			</div>
 			<div>
-				<p>
+				<h2>
 					<b>Popular Articles</b>
-				</p>
+				</h2>
 				{articles
 					.slice(0, 5)
 					.map(
@@ -65,7 +75,9 @@ function Home({ setHeader, current }) {
 							return (
 								<div key={created_at + index} className="article-card">
 									<Link to={`/articles/${article_id}`}>
-										<b>{title}</b>
+										<h3>
+											<b>{title}</b>
+										</h3>
 									</Link>
 									<p>By {author}</p>
 									<p>{created_at.slice(0, 10)}</p>

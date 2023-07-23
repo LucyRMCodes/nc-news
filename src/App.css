@@ -3,12 +3,18 @@ body {
 }
 
 #root {
-	margin-top: 200px;
+	background-color: white;
+	margin-top: 100px;
+	border-top: 100px solid white;
 	display: flex;
 	flex-direction: column;
 	width: 90%;
 	text-align: center;
 	justify-content: center;
+}
+
+input {
+	font-size: medium;
 }
 
 nav {
@@ -18,7 +24,7 @@ nav {
 }
 
 h1 {
-	color: #000;
+	color: white;
 	margin-top: 0px;
 }
 
@@ -38,6 +44,7 @@ li:hover {
 	margin: 1rem;
 }
 .article-page {
+	padding: 20px;
 	max-width: 90%;
 	margin-top: -100px;
 	display: flex;
@@ -57,6 +64,7 @@ li:hover {
 .article-title {
 	color: #eb1c24;
 	text-align: left;
+	width: 100%;
 }
 
 .article-image {
@@ -74,7 +82,6 @@ li:hover {
 	grid-template-columns: repeat(4, auto);
 	justify-content: center;
 	align-items: center;
-	column-gap: 10px;
 }
 
 .comments {
@@ -90,7 +97,7 @@ li:hover {
 
 .article-card {
 	margin: 0px;
-	border: 1px solid white;
+	border: 2px solid #242424;
 	border-radius: 20px;
 	margin-bottom: 1rem;
 	padding-top: 1rem;
@@ -103,7 +110,7 @@ li:hover {
 	padding-bottom: 10px;
 	border: 0px;
 	width: 100%;
-	background-color: white;
+	background-color: black;
 	position: fixed;
 	left: 0;
 	top: 0;
@@ -130,7 +137,7 @@ li:hover {
 	grid-row: 1;
 	width: 100%;
 	height: 110px;
-	border: 1px solid white;
+	border: 2px solid #242424;
 	padding: 0.5rem;
 	margin-bottom: 0px;
 	font-size: small;
