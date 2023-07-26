@@ -16,10 +16,11 @@ function Home({ setHeader, current }) {
 				return fetchUsers();
 			})
 			.then((authors) => {
-				console.log(authors);
 				setAuthors(authors);
 			})
-			.finally(setIsLoading(false));
+			.finally(() => {
+				setIsLoading(false);
+			});
 	}, []);
 	if (isLoading) return <Loading />;
 	return (
